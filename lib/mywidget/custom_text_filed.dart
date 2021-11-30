@@ -4,17 +4,17 @@ class CustomTextFiled extends StatelessWidget {
   final TextEditingController textEditingController;
   final Color color;
   final double width;
-  final IconData? icon;
+  final IconData  icon;
   final bool obscureText;
   final TextInputType keyboardType;
 final String hintText;
   CustomTextFiled(
-      {required this.textEditingController,required this.hintText,
-      required this.color,
-      required this.width,
+      {@required this.textEditingController,@required this.hintText,
+   @   required this.color,
+   @   required this.width,
        this.icon,
       this.obscureText = false,
-      required this.keyboardType});
+    @  required this.keyboardType});
 
   @override
   Widget build(BuildContext context) {

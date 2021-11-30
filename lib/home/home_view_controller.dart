@@ -37,13 +37,13 @@ class HomeViwController extends GetxController {
     'Page5': GlobalKey<NavigatorState>(),
   };
 
-  late Widget currentScreen=Tap1Scr();
+    Widget currentScreen=Tap1Scr();
 
   @override
   void onInit() {
     super.onInit();
     currentScreen = PageToView(
-      naigatorKey: _navigatorKeys[_pageKeys[0]]!,
+      naigatorKey: _navigatorKeys[_pageKeys[0]] ,
       tabItem: _pageKeys[0],
     ); //=HomeView();
   }
@@ -65,7 +65,7 @@ class HomeViwController extends GetxController {
     return Offstage(
       offstage: _currentPage != tabItem,
       child: PageToView(
-        naigatorKey: _navigatorKeys[tabItem]!,
+        naigatorKey: _navigatorKeys[tabItem] ,
         tabItem: tabItem,
       ),
     );
@@ -80,7 +80,7 @@ class PageToView extends StatelessWidget {
   final GlobalKey<NavigatorState> naigatorKey;
   final String tabItem;
 
-  const PageToView({required this.naigatorKey, required this.tabItem});
+  const PageToView({  this.naigatorKey,   this.tabItem});
 
   @override
   Widget build(BuildContext context) {

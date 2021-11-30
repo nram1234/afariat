@@ -1,119 +1,163 @@
 class AdvertsJson {
-  int page;
-  int limit;
-  int pages;
-  int total;
-  Links lLinks;
-  Embedded eEmbedded;
 
-  AdvertsJson(
-      {required this.page,
-      required  this.limit,
-      required  this.pages,
-      required  this.total,
-      required  this.lLinks,
-       required this.eEmbedded});
 
-  AdvertsJson.fromJson(Map<String, dynamic> json) {
+
+
+  AdvertsJson({
+     this.page,
+     this.limit,
+     this.pages,
+     this.total,
+     this.embedded,
+     this.links,
+  });
+     int page;
+     int limit;
+     int pages;
+     int total;
+     Links links;
+     Embedded embedded;
+
+
+  AdvertsJson.fromJson(Map<String, dynamic> json){
     page = json['page'];
     limit = json['limit'];
     pages = json['pages'];
     total = json['total'];
-    lLinks = (json['_links'] != null ? Links.fromJson(json['_links']) : null)!;
-    eEmbedded = (json['_embedded'] != null
-        ? new Embedded.fromJson(json['_embedded'])
-        : null)!;
+    print("_links  ${json['_links']}");
+   links = Links.fromJson(json['_links']);
+    embedded = Embedded.fromJson(json['_embedded']);
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['page'] = this.page;
-    data['limit'] = this.limit;
-    data['pages'] = this.pages;
-    data['total'] = this.total;
-    if (this.lLinks != null) {
-      data['_links'] = this.lLinks.toJson();
-    }
-    if (this.eEmbedded != null) {
-      data['_embedded'] = this.eEmbedded.toJson();
-    }
-    return data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   final data = <String, dynamic>{};
+  //   data['page'] = page;
+  //   data['limit'] = limit;
+  //   data['pages'] = pages;
+  //   data['total'] = total;
+  //   data['_links'] = links.toJson();
+  //   data['_embedded'] = embedded.toJson();
+  //   return data;
+  // }
 }
 
 class Links {
-  Self self;
-  Self first;
-  Self last;
-  Self next;
+  Links({
+     this.self,
+     this.first,
+     this.last,
+     this.next,
+  });
+   Self  self;
+    First  first;
+   Last  last;
+    Next  next;
 
-  Links({required this.self, required this.first, required this.last, required this.next});
+  Links.fromJson(Map<String, dynamic>   json){
 
-  Links.fromJson(Map<String, dynamic> json) {
-    self = (json['self'] != null ? Self.fromJson(json['self']) : null)!;
-    first = (json['first'] != null ? Self.fromJson(json['first']) : null)!;
-    last = (json['last'] != null ? Self.fromJson(json['last']) : null)!;
-    next = (json['next'] != null ? Self.fromJson(json['next']) : null)!;
+    self = Self.fromJson(json    ['self']);
+    first = First.fromJson(json    ["first"]);
+    last = Last.fromJson(json     ['last']);
+    next = Next.fromJson(json     ['next']);
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.self != null) {
-      data['self'] = this.self.toJson();
-    }
-    if (this.first != null) {
-      data['first'] = this.first.toJson();
-    }
-    if (this.last != null) {
-      data['last'] = this.last.toJson();
-    }
-    if (this.next != null) {
-      data['next'] = this.next.toJson();
-    }
-    return data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   final data = <String, dynamic>{};
+  //   data['self'] = self.toJson();
+  //   data['first'] = first.toJson();
+  //   data['last'] = last.toJson();
+  //   data['next'] = next.toJson();
+  //   return data;
+  // }
 }
 
 class Self {
-  String href;
+  Self({
+      this.href,
+  });
+      String href;
 
-  Self({required this.href});
-
-  Self.fromJson(Map<String, dynamic> json) {
+  Self.fromJson(Map<String, dynamic> json){
     href = json['href'];
   }
 
+
+}
+
+class First {
+  First({
+        this.href,
+  });
+    String  href;
+
+  First.fromJson(Map<String, dynamic>   json){
+   // href = json  ['href'];
+  }
+
+}
+
+class Last {
+  Last({
+      this.href,
+  });
+      String href;
+
+  Last.fromJson(Map<String, dynamic> json){
+   // href = json['href'];
+  }
+
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['href'] = this.href;
+    final data = <String, dynamic>{};
+    data['href'] = href;
     return data;
   }
+}
+
+class Next {
+  Next({
+      this.href,
+  });
+   String href;
+
+  Next.fromJson(Map<String, dynamic> json){
+ //   href = json['href'];
+  }
+
+
 }
 
 class Embedded {
-  List<Adverts> adverts;
+  Embedded({
+      this.adverts,
+  });
+    List<Adverts> adverts;
 
-  Embedded({required this.adverts});
+  Embedded . fromJson(Map<String, dynamic>  json){
+    adverts = List.from(json ['adverts']).map((e)=>Adverts.fromJson(e)).toList();
 
-  Embedded.fromJson(Map<String, dynamic> json) {
-    if (json['adverts'] != null) {
-      adverts = <Adverts>[];
-      json['adverts'].forEach((v) {
-        adverts.add(new Adverts.fromJson(v));
-      });
-    }
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.adverts != null) {
-      data['adverts'] = this.adverts.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   final data = <String, dynamic>{};
+  //   data['adverts'] = adverts.map((e)=>e.toJson()).toList();
+  //   return data;
+  // }
 }
 
 class Adverts {
+  Adverts({
+   this.id,
+   this.categoryGroup,
+   this.photo,
+   this.description,
+   this.title,
+   this.price,
+   this.region,
+   this.city,
+   this.town,
+   this.modifiedAt,
+   this.links,
+  });
   int id;
   CategoryGroup categoryGroup;
   String photo;
@@ -121,170 +165,162 @@ class Adverts {
   String title;
   int price;
   Region region;
-  CategoryGroup city;
-  CategoryGroup town;
+  City city;
+  Town town;
   String modifiedAt;
-  Links lLinks;
+  Links links;
 
-  Adverts(
-      {
-        required this.id,
-      required this.categoryGroup,
-      required this.photo,
-      required this.description,
-      required this.title,
-      required this.price,
-      required this.region,
-      required this.city,
-      required this.town,
-      required this.modifiedAt,
-      required this.lLinks});
-
-  Adverts.fromJson(Map<String, dynamic> json) {
+  Adverts.fromJson(Map<String, dynamic> json){
     id = json['id'];
-    categoryGroup = (json['categoryGroup'] != null
-        ? CategoryGroup.fromJson(json['categoryGroup'])
-        : null)!;
+    categoryGroup = CategoryGroup.fromJson(json['categoryGroup']);
     photo = json['photo'];
     description = json['description'];
     title = json['title'];
     price = json['price'];
-    region =
-    (json['region'] != null ? Region.fromJson(json['region']) : null)!;
-    city =
-    (json['city'] != null ? CategoryGroup.fromJson(json['city']) : null)!;
-    town =
-    (json['town'] != null ?   CategoryGroup.fromJson(json['town']) : null)!;
+    region = Region.fromJson(json['region']);
+    city = City.fromJson(json['city']);
+    town = Town.fromJson(json['town']);
     modifiedAt = json['modified_at'];
-    lLinks = (json['_links'] != null ? Links.fromJson(json['_links']) : null)!;
+    links = Links.fromJson(json['_links']);
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    if (this.categoryGroup != null) {
-      data['categoryGroup'] = this.categoryGroup.toJson();
-    }
-    data['photo'] = this.photo;
-    data['description'] = this.description;
-    data['title'] = this.title;
-    data['price'] = this.price;
-    data['region'] = this.region.toJson();
-    data['city'] = this.city.toJson();
-    if (this.town != null) {
-      data['town'] = this.town.toJson();
-    }
-    data['modified_at'] = this.modifiedAt;
-    if (this.lLinks != null) {
-      data['_links'] = this.lLinks.toJson();
-    }
-    return data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   final _data = <String, dynamic>{};
+  //   _data['id'] = id;
+  //   _data['categoryGroup'] = categoryGroup.toJson();
+  //   _data['photo'] = photo;
+  //   _data['description'] = description;
+  //   _data['title'] = title;
+  //   _data['price'] = price;
+  //   _data['region'] = region.toJson();
+  //   _data['city'] = city.toJson();
+  //   _data['town'] = town.toJson();
+  //   _data['modified_at'] = modifiedAt;
+  //   _data['_links'] = links.toJson();
+  //   return _data;
+  // }
 }
 
 class CategoryGroup {
-  int id;
-  String name;
-  int order;
-  Links lLinks;
+  CategoryGroup({
+   this.id,
+   this.name,
+   this.order,
+   this.links,
+  });
+   int id;
+   String name;
+   int order;
+   Links  links;
 
-  CategoryGroup({required this.id, required this.name, required this.order,required this.lLinks});
-
-  CategoryGroup.fromJson(Map<String, dynamic> json) {
+  CategoryGroup.fromJson(Map<String, dynamic> json){
     id = json['id'];
     name = json['name'];
     order = json['order'];
-    lLinks = (json['_links'] != null ? Links.fromJson(json['_links']) : null)!;
+    links = Links.fromJson(json['_links']);
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['order'] = this.order;
-    if (this.lLinks != null) {
-      data['_links'] = this.lLinks.toJson();
-    }
-    return data;
-  }
-}
-
-class Links {
-  Self self;
-  Self search;
-
-  Links({required this.self, required this.search});
-
-  Links.fromJson(Map<String, dynamic> json) {
-    self = (json['self'] != null ? Self.fromJson(json['self']) : null)!;
-    search = (json['search'] != null ? Self.fromJson(json['search']) : null)!;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.self != null) {
-      data['self'] = this.self.toJson();
-    }
-    if (this.search != null) {
-      data['search'] = this.search.toJson();
-    }
-    return data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   final data = <String, dynamic>{};
+  //   data['id'] = id;
+  //   data['name'] = name;
+  //   data['order'] = order;
+  //   data['_links'] = links!.toJson();
+  //   return data;
+  // }
 }
 
 class Region {
+  Region({
+      this.id,
+    this.name,
+    this.isoCode,
+    this.codeInsee,
+    this.order,
+    this.links,
+  });
   int id;
   String name;
   String isoCode;
   String codeInsee;
   int order;
-  Links lLinks;
+  Links  links;
 
-  Region(
-      {this.id,
-        this.name,
-        this.isoCode,
-        this.codeInsee,
-        this.order,
-        this.lLinks});
-
-  Region.fromJson(Map<String, dynamic> json) {
+  Region.fromJson(Map<String, dynamic> json){
     id = json['id'];
     name = json['name'];
     isoCode = json['iso_code'];
     codeInsee = json['code_insee'];
     order = json['order'];
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    links = Links.fromJson(json['_links']);
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['iso_code'] = this.isoCode;
-    data['code_insee'] = this.codeInsee;
-    data['order'] = this.order;
-    if (this.lLinks != null) {
-      data['_links'] = this.lLinks.toJson();
-    }
-    return data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   final data = <String, dynamic>{};
+  //   data['id'] = id;
+  //   data['name'] = name;
+  //   data['iso_code'] = isoCode;
+  //   data['code_insee'] = codeInsee;
+  //   data['order'] = order;
+  //   data['_links'] = links.toJson();
+  //   return data;
+  // }
 }
 
-class Links {
-  Self self;
+class City {
+  City({
+     this.id,
+     this.name,
+     this.order,
+     this.links,
+  });
+  int id;
+  String name;
+  int order;
+  Links  links;
 
-  Links({this.self});
-
-  Links.fromJson(Map<String, dynamic> json) {
-    self = json['self'] != null ? new Self.fromJson(json['self']) : null;
+  City.fromJson(Map<String, dynamic> json){
+    id = json['id'];
+    name = json['name'];
+    order = json['order'];
+    links = Links.fromJson(json['_links']);
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.self != null) {
-      data['self'] = this.self.toJson();
-    }
-    return data;
+  // Map<String, dynamic> toJson() {
+  //   final data = <String, dynamic>{};
+  //   data['id'] = id;
+  //   data['name'] = name;
+  //   data['order'] = order;
+  //   data['_links'] = links.toJson();
+  //   return data;
+  // }
+}
+
+class Town {
+  Town({
+   this.id,
+   this.name,
+   this.order,
+   this.links,
+  });
+      int id;
+      String name;
+      int order;
+      Links  links;
+
+  Town.fromJson(Map<String, dynamic> json){
+    id = json['id'];
+    name = json['name'];
+    order = json['order'];
+    links = Links.fromJson(json['_links']);
   }
+
+  // Map<String, dynamic> toJson() {
+  //   final data = <String, dynamic>{};
+  //   data['id'] = id;
+  //   data['name'] = name;
+  //   data['order'] = order;
+  //   data['_links'] = links.toJson();
+  //   return data;
+  // }
 }

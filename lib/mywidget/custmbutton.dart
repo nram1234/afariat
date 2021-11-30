@@ -45,9 +45,9 @@ class CustomButton extends StatelessWidget {
   }
 
   CustomButton(
-      {required this.btcolor,required this.function,
-      required this.labcolor,
-      required this.label,
-      required this.height,
-      required this.width,this.fontSize=16,this.fontWeight=FontWeight.normal});
+      {@required this.btcolor,@required this.function,
+   @  required this.labcolor,
+   @  required this.label,
+   @  required this.height,
+   @  required this.width,this.fontSize=16,this.fontWeight=FontWeight.normal});
 }

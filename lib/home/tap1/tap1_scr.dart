@@ -1,3 +1,4 @@
+import 'package:afariat/mywidget/myhomeitem.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -5,10 +6,9 @@ import 'package:get/get.dart';
 import 'tap1viewcontroller.dart';
 
 class Tap1Scr extends GetWidget<Tap1ViewController> {
-  const Tap1Scr({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    Size _size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -30,13 +30,19 @@ class Tap1Scr extends GetWidget<Tap1ViewController> {
               )
             ],
           ),
-          Expanded(flex: 1,
+          Expanded(
+            flex: 1,
             child: GetBuilder<Tap1ViewController>(builder: (logic) {
               return logic.getdatafromweb
                   ? Center(child: CircularProgressIndicator())
-                  : ListView.builder(itemBuilder: (context,pos){
-                    return Container();
-              });
+                  : ListView.builder(
+                      itemCount: logic.adverts.length,
+                      itemBuilder: (context, pos) {
+                        return MyHomeItem(
+                          size: _size,
+                          title: logic.adverts[pos].title,img:logic.adverts[pos].photo,
+                        );
+                      });
             }),
           )
         ],

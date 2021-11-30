@@ -13,15 +13,20 @@ class AllNetworkingReq {
       baseUrl: "https://afariat.com/api/v1" );
  final Dio _dio =Dio(options );
 
-Future <AdvertsJson> getadverts()async{
-  AdvertsJson advertsJson;
+Future <AdvertsJson > getadverts()async{
+  AdvertsJson  advertsJson  ;
+  var data;
   final formData = {
 
     "apikey": SettingApp.apiKey,
   };
- await _dio.get("/adverts",queryParameters: formData).then((value) {
-  advertsJson=Adverts.fromJson(json);
-  });
+
+   await _dio.get(baseurl+"adverts",queryParameters: formData).then((value) {
+    // print(value);
+     data=value.data;
+   });
+  advertsJson=AdvertsJson.fromJson(data);
+ // print(advertsJson);
   return advertsJson;
 }
 
