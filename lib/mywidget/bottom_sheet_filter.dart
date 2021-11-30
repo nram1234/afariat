@@ -77,65 +77,69 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
             });
           },
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: _size.width * .4,
-                decoration:
-                BoxDecoration(border: Border.all(color: Colors.orange)),
-                child: DropdownButton<String>(
-                  isExpanded: true,
-                  value: dropdownValue,
-                  icon: Icon(Icons.arrow_downward),
-                  iconSize: 24,
-                  elevation: 16,
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownValue = newValue;
-                    });
-                  },
-                  items: <String>['One', 'Two', 'Free', 'Four']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: _size.width * .4,
-                decoration:
-                BoxDecoration(border: Border.all(color: Colors.orange)),
-                child: GetBuilder<Tap1ViewController>(
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: _size.width * .4,
+                  decoration:
+                  BoxDecoration(border: Border.all(color: Colors.orange)),
+                  child: GetBuilder<Tap1ViewController>(
 
-                  builder: (logic) {
-                    return DropdownButton<Prices>(
-                      isExpanded: true,
-                      value: logic.dropdownMaxValue,
-                      icon: Icon(Icons.arrow_downward),
-                      iconSize: 24,
-                      elevation: 16,
-                      onChanged:logic.updatdropdownMaxValue,
-                      items: logic.prices
-                          .map<DropdownMenuItem<Prices>>((Prices value) {
-                        return DropdownMenuItem<Prices>(
-                          value: value,
-                          child: Text(value.name),
-                        );
-                      }).toList(),
-                    );
-                  },
+                    builder: (logic) {
+                      return DropdownButton<Prices>(
+                        isExpanded: true,hint: Text('min'),
+                        value: logic.dropdownminValue,
+                        icon: Icon(Icons.arrow_downward),
+                        iconSize: 24,
+                        elevation: 16,
+                        onChanged:logic.updatdropdownminValue,
+                        items: logic.prices
+                            .map<DropdownMenuItem<Prices>>((Prices value) {
+                          return DropdownMenuItem<Prices>(
+                            value: value,
+                            child: Text(value.name),
+                          );
+                        }).toList(),
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: _size.width * .4,
+                  decoration:
+                  BoxDecoration(border: Border.all(color: Colors.orange)),
+                  child: GetBuilder<Tap1ViewController>(
+
+                    builder: (logic) {
+                      return DropdownButton<Prices>(
+                        isExpanded: true,hint: Text('Max'),
+                        value: logic.dropdownMaxValue,
+                        icon: Icon(Icons.arrow_downward),
+                        iconSize: 24,
+                        elevation: 16,
+                        onChanged:logic.updatdropdownMaxValue,
+                        items: logic.prices
+                            .map<DropdownMenuItem<Prices>>((Prices value) {
+                          return DropdownMenuItem<Prices>(
+                            value: value,
+                            child: Text(value.name),
+                          );
+                        }).toList(),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
         )
       ],
     );
