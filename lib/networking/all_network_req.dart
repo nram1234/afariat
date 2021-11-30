@@ -11,16 +11,18 @@ class AllNetworkingReq {
    String baseurl = "https://afariat.com/api/v1/";
   static BaseOptions options = BaseOptions(
       baseUrl: "https://afariat.com/api/v1" );
- Dio _dio =Dio(options );
+ final Dio _dio =Dio(options );
 
-Future  getadverts()async{
+Future <AdvertsJson> getadverts()async{
+  AdvertsJson advertsJson;
   final formData = {
 
     "apikey": SettingApp.apiKey,
   };
-  _dio.get(baseurl+"/adverts",queryParameters: formData).then((value) {
-    print("vvvvvvvvvvvvvvvvvvvvvvvvvvvv n${value.data}");
+ await _dio.get("/adverts",queryParameters: formData).then((value) {
+  advertsJson=Adverts.fromJson(json);
   });
+  return advertsJson;
 }
 
 }
