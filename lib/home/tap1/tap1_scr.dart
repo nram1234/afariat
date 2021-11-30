@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
-class Tap1Scr extends StatefulWidget {
-  @override
-  _Tap1ScrState createState() => _Tap1ScrState();
-}
+import 'package:get/get.dart';
 
-class _Tap1ScrState extends State<Tap1Scr> {
+import 'tap1viewcontroller.dart';
+
+class Tap1Scr extends GetWidget<Tap1ViewController> {
+  const Tap1Scr({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,6 +29,15 @@ class _Tap1ScrState extends State<Tap1Scr> {
                 size: 30,
               )
             ],
+          ),
+          Expanded(flex: 1,
+            child: GetBuilder<Tap1ViewController>(builder: (logic) {
+              return logic.getdatafromweb
+                  ? Center(child: CircularProgressIndicator())
+                  : ListView.builder(itemBuilder: (context,pos){
+                    return Container();
+              });
+            }),
           )
         ],
       ),
