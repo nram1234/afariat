@@ -19,11 +19,12 @@ bool getdatafromweb=true;
 
   updatedata() async {
 
-//getdatafromweb=false;
+
 
 
 await req.getadverts().then((value) {
   adverts=  value.embedded.adverts;
+  getdatafromweb=false;
 });
       update();
 
