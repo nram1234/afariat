@@ -5,6 +5,7 @@ import 'package:afariat/utilitie/setting_app.dart';
 import 'package:dio/dio.dart';
 
 import 'jsonfile/adverts_json.dart';
+import 'jsonfile/prices_json.dart';
 
 
 class AllNetworkingReq {
@@ -29,5 +30,20 @@ Future <AdvertsJson > getadverts()async{
  // print(advertsJson);
   return advertsJson;
 }
+   Future <PricesJson > prices()async{
+     PricesJson  advertsJson  ;
+     var data;
+     final formData = {
 
+       "apikey": SettingApp.apiKey,
+     };
+
+     await _dio.get(baseurl+"simple/prices",queryParameters: formData).then((value) {
+
+       data=value.data;
+     });
+     advertsJson=PricesJson.fromJson(data);
+
+     return advertsJson;
+   }
 }
