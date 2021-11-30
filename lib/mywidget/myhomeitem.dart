@@ -51,9 +51,10 @@ class MyHomeItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Expanded(flex: 1,
-                    child: Text(adverts.title , overflow: TextOverflow.ellipsis,
-                        ),
+                  Container(  width: size.width * .4,
+                    child: Text(adverts.title ,
+                      softWrap: true,
+                      overflow: TextOverflow.fade,   ),
                   ),
                   const Spacer(),
                   Row(
