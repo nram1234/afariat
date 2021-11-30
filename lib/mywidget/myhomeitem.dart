@@ -5,7 +5,7 @@ class MyHomeItem extends StatelessWidget {
   final Size size;
 
 
-  MyHomeItem(this.size, this.adverts);
+  MyHomeItem({this.size, this.adverts});
 
   final Adverts adverts;
   @override
@@ -37,7 +37,7 @@ class MyHomeItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.network(
-              img,
+              adverts.photo,
               height: size.height * .25,
               width: size.width * .4,
               fit: BoxFit.fill,
@@ -49,7 +49,7 @@ class MyHomeItem extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(title),
+                  child: Text(adverts.title),
                 ),
                 const Spacer(),
                 Row(
@@ -58,11 +58,11 @@ class MyHomeItem extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(price),
+                      child: Text(adverts.price.toString()),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(time),
+                      child: Text(adverts.modifiedAt),
                     ),
                   ],
                 )

@@ -39,8 +39,8 @@ class Tap1Scr extends GetWidget<Tap1ViewController> {
                       itemCount: logic.adverts.length,
                       itemBuilder: (context, pos) {
                         return MyHomeItem(
-                          size: _size,
-                          title: logic.adverts[pos].title,img:logic.adverts[pos].photo,
+                          size: _size,adverts: logic.adverts[pos],
+
                         );
                       });
             }),
