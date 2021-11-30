@@ -32,41 +32,46 @@ class MyHomeItem extends StatelessWidget {
         ),
         height: size.height * .3,
         child: Row(
-          mainAxisSize: MainAxisSize.max,
+
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Image.network(
-              adverts.photo,
-              height: size.height * .25,
+            Container( height: size.height * .25,
               width: size.width * .4,
-              fit: BoxFit.fill,
+              child: Image.network(
+                adverts.photo,
+
+                fit: BoxFit.fill,
+              ),
             ),
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(adverts.title),
-                ),
-                const Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(adverts.price.toString()),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(adverts.modifiedAt),
-                    ),
-                  ],
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(flex: 1,
+                    child: Text(adverts.title , overflow: TextOverflow.ellipsis,
+                        ),
+                  ),
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(adverts.price.toString()),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(adverts.modifiedAt),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             )
           ],
         ),
