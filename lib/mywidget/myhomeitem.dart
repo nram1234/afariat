@@ -38,10 +38,10 @@ class MyHomeItem extends StatelessWidget {
           children: [
             Container( height: size.height * .25,
               width: size.width * .4,
-              child: Image.network(
-                adverts.photo,
+              child: Image.network("https://i.pcmag.com/imagery/reviews/03xdTO0Ka4H4KvEgtSPg4c2-12.1569479325.fit_lpad.size_625x365.jpg"
+              //  adverts.photo,
 
-                fit: BoxFit.fill,
+               , fit: BoxFit.fill,
               ),
             ),
             Padding(
@@ -52,7 +52,7 @@ class MyHomeItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(  width: size.width * .4,
-                    child: Text(adverts.title ,
+                    child: Text("iPhone 13. The most advanced du",//adverts.title ,
                       softWrap: true,
                       overflow: TextOverflow.fade,   ),
                   ),
@@ -63,11 +63,14 @@ class MyHomeItem extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(adverts.price.toString()),
+                        child: Text("1200"//adverts.price.toString()
+
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(adverts.modifiedAt),
+                        child: Text("11/11/2031"//adverts.modifiedAt
+                        ),
                       ),
                     ],
                   )

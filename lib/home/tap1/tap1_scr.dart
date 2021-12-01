@@ -1,5 +1,6 @@
 import 'package:afariat/mywidget/bottom_sheet_filter.dart';
 import 'package:afariat/mywidget/myhomeitem.dart';
+import 'package:afariat/networking/jsonfile/adverts_json.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -72,11 +73,11 @@ class Tap1Scr extends GetWidget<Tap1ViewController> {
               return logic.getdatafromweb
                   ? Center(child: const CircularProgressIndicator())
                   : ListView.builder(
-                      itemCount: logic.adverts.length,
+                      itemCount: 100,//logic.adverts.length,
                       itemBuilder: (context, pos) {
                         return MyHomeItem(
                           size: _size,
-                          adverts: logic.adverts[pos],
+                   // logic.adverts[pos],
                         );
                       });
             }),
