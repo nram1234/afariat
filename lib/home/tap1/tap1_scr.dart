@@ -11,7 +11,7 @@ class Tap1Scr extends GetWidget<Tap1ViewController> {
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
           const SizedBox(
@@ -67,7 +67,7 @@ class Tap1Scr extends GetWidget<Tap1ViewController> {
             flex: 1,
             child: GetBuilder<Tap1ViewController>(builder: (logic) {
               return logic.getdatafromweb
-                  ? Center(child: CircularProgressIndicator())
+                  ? Center(child: const CircularProgressIndicator())
                   : ListView.builder(
                       itemCount: logic.adverts.length,
                       itemBuilder: (context, pos) {
