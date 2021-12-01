@@ -1,3 +1,4 @@
+import 'package:afariat/controllers/category_and_subcategory.dart';
 import 'package:afariat/home/tap1/tap1viewcontroller.dart';
 import 'package:afariat/networking/jsonfile/prices_json.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,8 @@ class BottomSheetFilter extends StatefulWidget {
 class _BottomSheetFilterState extends State<BottomSheetFilter> {
   String dropdownValue = 'One';
   SfRangeValues _values = SfRangeValues(40.0, 100.0);
-  final control = Get.find<Tap1ViewController>();
-
+  final tap1ViewController = Get.find<Tap1ViewController>();
+  final categoryAndSubcategory = Get.find<CategoryAndSubcategory>();
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery

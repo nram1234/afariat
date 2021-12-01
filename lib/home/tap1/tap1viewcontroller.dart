@@ -12,6 +12,7 @@ class Tap1ViewController extends GetxController {
   List<Prices> prices=[];
   Prices dropdownMaxValue;
   Prices dropdownminValue;
+  
   @override
   void onInit() {
     super.onInit();

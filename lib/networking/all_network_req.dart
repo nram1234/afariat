@@ -5,6 +5,7 @@ import 'package:afariat/utilitie/setting_app.dart';
 import 'package:dio/dio.dart';
 
 import 'jsonfile/adverts_json.dart';
+import 'jsonfile/categories_groupped_json.dart';
 import 'jsonfile/prices_json.dart';
 
 
@@ -45,5 +46,22 @@ Future <AdvertsJson > getadverts()async{
      advertsJson=PricesJson.fromJson(data);
 
      return advertsJson;
+   }
+   Future <CategoriesGrouppedJson > categoriesGrouppedJson()async{
+     CategoriesGrouppedJson  categoriesGrouppedJson  ;
+     var data;
+     final formData = {
+
+       "apikey": SettingApp.apiKey,
+     };
+
+     await _dio.get(baseurl+"simple/categories-groupped",queryParameters: formData).then((value) {
+
+       data=value.data;
+       print(data);
+     });
+     categoriesGrouppedJson=CategoriesGrouppedJson.fromJson(data);
+
+     return categoriesGrouppedJson;
    }
 }
