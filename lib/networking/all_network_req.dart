@@ -58,7 +58,7 @@ Future <AdvertsJson > getadverts()async{
      await _dio.get(baseurl+"simple/categories-groupped",queryParameters: formData).then((value) {
 
        data=value.data;
-       print(data);
+
      });
      categoriesGrouppedJson=CategoriesGrouppedJson.fromJson(data);
 

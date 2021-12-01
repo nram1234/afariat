@@ -1,5 +1,6 @@
 import 'package:afariat/controllers/category_and_subcategory.dart';
 import 'package:afariat/home/tap1/tap1viewcontroller.dart';
+import 'package:afariat/networking/jsonfile/categories_groupped_json.dart';
 import 'package:afariat/networking/jsonfile/prices_json.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +15,8 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
   String dropdownValue = 'One';
   SfRangeValues _values = SfRangeValues(40.0, 100.0);
   final tap1ViewController = Get.find<Tap1ViewController>();
-  final categoryAndSubcategory = Get.find<CategoryAndSubcategory>();
+ // final categoryAndSubcategory = Get.find<CategoryAndSubcategory>();
+
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery
@@ -35,27 +37,45 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
           child: Container(
             width: double.infinity,
             decoration: BoxDecoration(border: Border.all(color: Colors.orange)),
-            child: DropdownButton<String>(
-              isExpanded: true,
-              value: dropdownValue,
-              icon: Icon(Icons.arrow_downward),
-              iconSize: 24,
-              elevation: 16,
-              onChanged: (String newValue) {
-                setState(() {
-                  dropdownValue = newValue;
-                });
-              },
-              items: <String>['One', 'Two', 'Free', 'Four']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
+            child: GetBuilder<CategoryAndSubcategory>(
+                builder: (logic) {
+                  return Column(
+                    children: [
+                      DropdownButton<Categories>(
+                        isExpanded: true,
+                        value: logic.categorie,
+                        icon: const Icon(Icons.arrow_downward),
+                        iconSize: 24,
+                        elevation: 16,
+                        onChanged: logic.updateCategorie ,
+                        items: logic.categories
+                            .map<DropdownMenuItem<Categories>>((Categories value) {
+                          return DropdownMenuItem<Categories>(
+                            value: value,
+                            child: Text(value.name),
+                          );
+                        }).toList(),
+                      ),
+                  DropdownButton<Subcategories>(
+                  isExpanded: true,
+                  value: logic.subcategories1,
+                  icon: const Icon(Icons.arrow_downward),
+                  iconSize: 24,
+                  elevation: 16,
+                  onChanged:logic.updateSupCategorie ,
+                  items: logic.listSubcategories
+                      .map<DropdownMenuItem<Subcategories>>((Subcategories value) {
+                  return DropdownMenuItem<Subcategories>(
                   value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
+                  child: Text(value.name),
+                  );
+                  }).toList(),
+                  ) ],
+                  );
+                }),
           ),
         ),
+
         const Padding(
           padding: EdgeInsets.all(16.0),
           child: Text(
@@ -93,12 +113,13 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
 
                     builder: (logic) {
                       return DropdownButton<Prices>(
-                        isExpanded: true,hint: Text('min'),
+                        isExpanded: true,
+                        hint: Text('min'),
                         value: logic.dropdownminValue,
                         icon: Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        onChanged:logic.updatdropdownminValue,
+                        onChanged: logic.updatdropdownminValue,
                         items: logic.prices
                             .map<DropdownMenuItem<Prices>>((Prices value) {
                           return DropdownMenuItem<Prices>(
@@ -121,12 +142,13 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
 
                     builder: (logic) {
                       return DropdownButton<Prices>(
-                        isExpanded: true,hint: Text('Max'),
+                        isExpanded: true,
+                        hint: Text('Max'),
                         value: logic.dropdownMaxValue,
                         icon: Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        onChanged:logic.updatdropdownMaxValue,
+                        onChanged: logic.updatdropdownMaxValue,
                         items: logic.prices
                             .map<DropdownMenuItem<Prices>>((Prices value) {
                           return DropdownMenuItem<Prices>(
