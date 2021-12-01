@@ -12,7 +12,7 @@ class CategoryAndSubcategory extends GetxController{
   @override
   void onInit() {
     super.onInit();
-   _allNetworkingReq.categoriesGrouppedJson().then((value) {
+   _allNetworkingReq.categoriesGroupped().then((value) {
       categories = value.data;
       for (var element in categories) {
         sc[element.id] = element.subcategories;

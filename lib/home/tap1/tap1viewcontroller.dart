@@ -27,7 +27,9 @@ class Tap1ViewController extends GetxController {
     });
     update();
   }
+  filterupdate(){
 
+}
   getPriceList()async {
    await req.prices().then((value) {
      prices=value.data;

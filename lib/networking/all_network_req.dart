@@ -6,7 +6,9 @@ import 'package:dio/dio.dart';
 
 import 'jsonfile/adverts_json.dart';
 import 'jsonfile/categories_groupped_json.dart';
+import 'jsonfile/cities_json.dart';
 import 'jsonfile/prices_json.dart';
+import 'jsonfile/towns_json.dart';
 
 
 class AllNetworkingReq {
@@ -31,6 +33,23 @@ Future <AdvertsJson > getadverts()async{
  // print(advertsJson);
   return advertsJson;
 }
+
+   // Future <AdvertsJson > filterupdateadverts()async{
+   //   AdvertsJson  advertsJson  ;
+   //   var data;
+   //   final formData = {
+   //
+   //     "apikey": SettingApp.apiKey,
+   //   };
+   //
+   //   await _dio.get(baseurl+"adverts",queryParameters: formData).then((value) {
+   //     // print(value);
+   //     data=value.data;
+   //   });
+   //   advertsJson=AdvertsJson.fromJson(data);
+   //   // print(advertsJson);
+   //   return advertsJson;
+   // }
    Future <PricesJson > prices()async{
      PricesJson  advertsJson  ;
      var data;
@@ -47,7 +66,7 @@ Future <AdvertsJson > getadverts()async{
 
      return advertsJson;
    }
-   Future <CategoriesGrouppedJson > categoriesGrouppedJson()async{
+   Future <CategoriesGrouppedJson > categoriesGroupped()async{
      CategoriesGrouppedJson  categoriesGrouppedJson  ;
      var data;
      final formData = {
@@ -63,5 +82,43 @@ Future <AdvertsJson > getadverts()async{
      categoriesGrouppedJson=CategoriesGrouppedJson.fromJson(data);
 
      return categoriesGrouppedJson;
+   }
+
+
+   Future <CitiesJson > cities()async{
+     CitiesJson  citiesJson  ;
+     var data;
+     final formData = {
+
+       "apikey": SettingApp.apiKey,
+     };
+
+     await _dio.get(baseurl+"simple/cities",queryParameters: formData).then((value) {
+
+       data=value.data;
+
+     });
+     citiesJson=CitiesJson.fromJson(data);
+
+     return citiesJson;
+   }
+
+
+   Future <TownsJson > towns(id)async{
+     TownsJson  townsJson  ;
+     var data;
+     final formData = {
+
+       "apikey": SettingApp.apiKey,
+     };
+
+     await _dio.get(baseurl+"simple/towns/$id",queryParameters: formData).then((value) {
+
+       data=value.data;
+
+     });
+     townsJson=TownsJson.fromJson(data);
+
+     return townsJson;
    }
 }

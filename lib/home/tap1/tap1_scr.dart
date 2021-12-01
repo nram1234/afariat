@@ -38,15 +38,18 @@ class Tap1Scr extends GetWidget<Tap1ViewController> {
                 onTap: () {
                   Get.bottomSheet(
                       Container(
-                          decoration:
-                              const BoxDecoration(  color: Colors.white,borderRadius: BorderRadius.only(    topLeft: Radius.circular(30.0),
-                                topRight: Radius.circular(30.0),)),
+                          decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(30.0),
+                                topRight: Radius.circular(30.0),
+                              )),
                           //height: 150,
 
-                          child:  BottomSheetFilter()),
+                          child: BottomSheetFilter()),
                       //   barrierColor: Colors.red[50],
-                      isDismissible: false,
-                      elevation: 10,
+                      isDismissible: true,  isScrollControlled:true ,
+                      elevation: 10,enableDrag: true,
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30.0),

@@ -2,9 +2,12 @@ import 'package:afariat/controllers/category_and_subcategory.dart';
 import 'package:afariat/home/tap1/tap1viewcontroller.dart';
 import 'package:afariat/networking/jsonfile/categories_groupped_json.dart';
 import 'package:afariat/networking/jsonfile/prices_json.dart';
+import 'package:afariat/utilitie/utilitie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
+
+import 'custmbutton.dart';
 
 class BottomSheetFilter extends StatefulWidget {
   @override
@@ -15,13 +18,12 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
   String dropdownValue = 'One';
   SfRangeValues _values = SfRangeValues(40.0, 100.0);
   final tap1ViewController = Get.find<Tap1ViewController>();
- // final categoryAndSubcategory = Get.find<CategoryAndSubcategory>();
+
+  // final categoryAndSubcategory = Get.find<CategoryAndSubcategory>();
 
   @override
   Widget build(BuildContext context) {
-    Size _size = MediaQuery
-        .of(context)
-        .size;
+    Size _size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -37,45 +39,45 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
           child: Container(
             width: double.infinity,
             decoration: BoxDecoration(border: Border.all(color: Colors.orange)),
-            child: GetBuilder<CategoryAndSubcategory>(
-                builder: (logic) {
-                  return Column(
-                    children: [
-                      DropdownButton<Categories>(
-                        isExpanded: true,
-                        value: logic.categorie,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        onChanged: logic.updateCategorie ,
-                        items: logic.categories
-                            .map<DropdownMenuItem<Categories>>((Categories value) {
-                          return DropdownMenuItem<Categories>(
-                            value: value,
-                            child: Text(value.name),
-                          );
-                        }).toList(),
-                      ),
+            child: GetBuilder<CategoryAndSubcategory>(builder: (logic) {
+              return Column(
+                children: [
+                  DropdownButton<Categories>(
+                    isExpanded: true,
+                    value: logic.categorie,
+                    icon: const Icon(Icons.arrow_downward),
+                    iconSize: 24,
+                    elevation: 16,
+                    onChanged: logic.updateCategorie,
+                    items: logic.categories
+                        .map<DropdownMenuItem<Categories>>((Categories value) {
+                      return DropdownMenuItem<Categories>(
+                        value: value,
+                        child: Text(value.name),
+                      );
+                    }).toList(),
+                  ),
                   DropdownButton<Subcategories>(
-                  isExpanded: true,
-                  value: logic.subcategories1,
-                  icon: const Icon(Icons.arrow_downward),
-                  iconSize: 24,
-                  elevation: 16,
-                  onChanged:logic.updateSupCategorie ,
-                  items: logic.listSubcategories
-                      .map<DropdownMenuItem<Subcategories>>((Subcategories value) {
-                  return DropdownMenuItem<Subcategories>(
-                  value: value,
-                  child: Text(value.name),
-                  );
-                  }).toList(),
-                  ) ],
-                  );
-                }),
+                    isExpanded: true,
+                    value: logic.subcategories1,
+                    icon: const Icon(Icons.arrow_downward),
+                    iconSize: 24,
+                    elevation: 16,
+                    onChanged: logic.updateSupCategorie,
+                    items: logic.listSubcategories
+                        .map<DropdownMenuItem<Subcategories>>(
+                            (Subcategories value) {
+                      return DropdownMenuItem<Subcategories>(
+                        value: value,
+                        child: Text(value.name),
+                      );
+                    }).toList(),
+                  )
+                ],
+              );
+            }),
           ),
         ),
-
         const Padding(
           padding: EdgeInsets.all(16.0),
           child: Text(
@@ -108,9 +110,8 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                 child: Container(
                   width: _size.width * .4,
                   decoration:
-                  BoxDecoration(border: Border.all(color: Colors.orange)),
+                      BoxDecoration(border: Border.all(color: Colors.orange)),
                   child: GetBuilder<Tap1ViewController>(
-
                     builder: (logic) {
                       return DropdownButton<Prices>(
                         isExpanded: true,
@@ -137,9 +138,8 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                 child: Container(
                   width: _size.width * .4,
                   decoration:
-                  BoxDecoration(border: Border.all(color: Colors.orange)),
+                      BoxDecoration(border: Border.all(color: Colors.orange)),
                   child: GetBuilder<Tap1ViewController>(
-
                     builder: (logic) {
                       return DropdownButton<Prices>(
                         isExpanded: true,
@@ -163,6 +163,17 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
               ),
             ],
           ),
+        ),
+        Row(
+          children: [
+            CustomButton(
+              height: 50,
+              width: _size.width * .4,
+              function: () {},
+              labcolor: textbuttonColor,
+              label: "APPLY FILTERS",btcolor: buttonColor,fontWeight: FontWeight.bold,fontSize: 20,
+            ),
+          ],
         )
       ],
     );
