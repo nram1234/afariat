@@ -64,7 +64,6 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                   DropdownButton<Subcategories>(
                     isExpanded: true,
                     value: logic.subcategories1,
-
                     iconSize: 24,
                     elevation: 16,
                     onChanged: logic.updateSupCategorie,
