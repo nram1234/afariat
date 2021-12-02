@@ -1,3 +1,5 @@
+import 'package:afariat/config/setting_app.dart';
+
 class AdvertsJson {
 
 
@@ -173,7 +175,7 @@ class Adverts {
   Adverts.fromJson(Map<String, dynamic> json){
     id = json['id'];
     categoryGroup = CategoryGroup.fromJson(json['categoryGroup']);
-    photo = json['photo'];
+    photo = "https://afariat.com/" +json['photo'];
     description = json['description'];
     title = json['title'];
     price = json['price'];

@@ -1,9 +1,14 @@
 
-import 'package:afariat/home/tap4/tap4_scr.dart';
+import 'package:afariat/home/tap_home/tap_home_scr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'tap1/tap1_scr.dart';
+import 'tap_myads/tap_myads_scr.dart';
+import 'tap_notification/tap_notification_scr.dart';
+import 'tap_profile/tap_profile_scr.dart';
+import 'tap_publish/tap_publish_scr.dart';
+
+
 
 
 class HomeViwController extends GetxController {
@@ -37,7 +42,7 @@ class HomeViwController extends GetxController {
     'Page5': GlobalKey<NavigatorState>(),
   };
 
-    Widget currentScreen=Tap1Scr();
+    Widget currentScreen=TapHomeScr();
 
   @override
   void onInit() {
@@ -84,35 +89,35 @@ class PageToView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget currentScreen = Tap1Scr();
+    Widget currentScreen = TapHomeScr();
 
     switch (tabItem) {
       case 'Page1':
         {
-          currentScreen = Tap1Scr();
+          currentScreen = TapHomeScr();
 
           break;
         }
       case 'Page2':
         {
-          currentScreen = Container();
+          currentScreen = TapPublishScr();
           break;
         }
       case 'Page3':
         {
-          currentScreen = Container();
+          currentScreen = TapMyadsScr();
           break;
         }
       case 'Page4':
         {
 
-          currentScreen = Tap4Profile();
+          currentScreen = TapNotificationScr();
           break;
         }
       case 'Page5':
         {
 
-          currentScreen = Tap4Profile();
+          currentScreen = TapProfileScr();
           break;
         }
     }

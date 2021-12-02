@@ -1,9 +1,10 @@
 import 'package:afariat/networking/all_network_req.dart';
+import 'package:afariat/networking/apis/get_categories_groupped_api.dart';
 import 'package:afariat/networking/jsonfile/categories_groupped_json.dart';
 import 'package:get/get.dart';
 
 class CategoryAndSubcategory extends GetxController{
-  final AllNetworkingReq _allNetworkingReq=AllNetworkingReq();
+  final GetCategoriesGrouppedApi _categoriesGrouppedApi=GetCategoriesGrouppedApi();
   Map<int, List<Subcategories>> sc = {};
   List<Subcategories> listSubcategories = [];
   Subcategories subcategories1;
@@ -12,7 +13,7 @@ class CategoryAndSubcategory extends GetxController{
   @override
   void onInit() {
     super.onInit();
-   _allNetworkingReq.categoriesGroupped().then((value) {
+    _categoriesGrouppedApi.categoriesGroupped().then((value) {
       categories = value.data;
       for (var element in categories) {
         sc[element.id] = element.subcategories;

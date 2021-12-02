@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'tap1viewcontroller.dart';
+import 'tap_home_viewcontroller.dart';
 
-class Tap1Scr extends GetWidget<Tap1ViewController> {
+class TapHomeScr extends GetWidget<TapHomeViewController> {
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
@@ -49,7 +49,7 @@ class Tap1Scr extends GetWidget<Tap1ViewController> {
 
                           child: BottomSheetFilter()),
                       //   barrierColor: Colors.red[50],
-                      isDismissible: true,  isScrollControlled:true ,
+                      isDismissible: true,//  isScrollControlled:true ,
                       elevation: 10,enableDrag: true,
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
@@ -69,15 +69,15 @@ class Tap1Scr extends GetWidget<Tap1ViewController> {
           ),
           Expanded(
             flex: 1,
-            child: GetBuilder<Tap1ViewController>(builder: (logic) {
+            child: GetBuilder<TapHomeViewController>(builder: (logic) {
               return logic.getdatafromweb
                   ? Center(child: const CircularProgressIndicator())
                   : ListView.builder(
                       itemCount: 100,//logic.adverts.length,
                       itemBuilder: (context, pos) {
                         return MyHomeItem(
-                          size: _size,
-                   // logic.adverts[pos],
+                          size: _size,adverts: logic.adverts[pos],
+
                         );
                       });
             }),

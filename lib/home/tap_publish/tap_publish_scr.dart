@@ -1,14 +1,10 @@
 
-import 'package:afariat/home/tap4/tap4viewcontroller.dart';
-import 'package:afariat/mywidget/custmbutton.dart';
-import 'package:afariat/mywidget/custom_text_filed.dart';
-import 'package:afariat/utilitie/utilitie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'tap5viewcontroller.dart';
+import 'tap_publish_viewcontroller.dart';
 
-class Tap5 extends GetWidget<Tab5> {
+class TapPublishScr extends GetWidget<TapPublishViewController> {
 
 
   @override
