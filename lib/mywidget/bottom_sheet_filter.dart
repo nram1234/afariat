@@ -49,7 +49,7 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                   DropdownButton<Categories>(
                     isExpanded: true,
                     value: logic.categorie,
-                    icon: const Icon(Icons.arrow_downward),
+
                     iconSize: 24,
                     elevation: 16,
                     onChanged: logic.updateCategorie,
@@ -64,7 +64,7 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                   DropdownButton<Subcategories>(
                     isExpanded: true,
                     value: logic.subcategories1,
-                    icon: const Icon(Icons.arrow_downward),
+
                     iconSize: 24,
                     elevation: 16,
                     onChanged: logic.updateSupCategorie,
