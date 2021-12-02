@@ -1,4 +1,4 @@
-import 'package:afariat/networking/all_network_req.dart';
+
 import 'package:afariat/networking/apis/get_cities_api.dart';
 import 'package:afariat/networking/apis/get_towns_api.dart';
 

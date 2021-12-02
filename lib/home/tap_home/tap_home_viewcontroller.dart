@@ -1,4 +1,4 @@
-import 'package:afariat/networking/all_network_req.dart';
+
 import 'package:afariat/networking/apis/get_advert_api.dart';
 import 'package:afariat/networking/apis/get_prices_api.dart';
 import 'package:afariat/networking/jsonfile/adverts_json.dart';
