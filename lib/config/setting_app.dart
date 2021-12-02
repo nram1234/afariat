@@ -12,7 +12,7 @@ class SettingsApp {
   static const String Advert = baseApiUrl + '/adverts';
   static const String cities = baseApiUrl + '/simple/cities';
 
-  static const String town = baseApiUrl + '/simple/town';
+  static const String town = baseApiUrl + '/simple/towns/';
   static const String categories = baseApiUrl + '/simple/categories-groupped';
   static const String price = baseApiUrl + '/simple/prices';
 

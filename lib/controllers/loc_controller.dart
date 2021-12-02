@@ -9,9 +9,10 @@ import 'package:get/get.dart';
 class LocController extends GetxController{
   final GetCitiesApi _citiesApi=GetCitiesApi();
   final GetTownsApi _townsApi=GetTownsApi();
-  List<Citie> cities;
+  List<Citie> cities=[];
   Citie citie;
-  List<Town> data;
+  List<Town> towns=[];
+  Town town;
   @override
   void onInit() {
     super.onInit();
@@ -22,13 +23,18 @@ class LocController extends GetxController{
   }
   updatecitie(Citie ci){
   citie=ci;
-  updateTowns( ci.id);
+  town=null;
+  updateTowns( ci.id.toString());
 update();
 }
+  updatetown(Town tow){
+    town=tow;
 
+    update();
+  }
 updateTowns(id){
   _townsApi.towns(id).then((value) {
-    data=value.data;
+    towns=value.data;
     update();
   });
 }

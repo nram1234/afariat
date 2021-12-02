@@ -6,7 +6,7 @@ class GetTownsApi{
   final DioSingleton _dioSingleton=DioSingleton();
 
 
-  Future <TownsJson > towns(id)async{
+  Future <TownsJson > towns(String id)async{
     TownsJson  townsJson  ;
     var data;
     final formData = {
