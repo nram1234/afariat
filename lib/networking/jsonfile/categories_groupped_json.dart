@@ -1,71 +1,53 @@
-class CategoriesGrouppedJson {
-  List<Categories> data;
 
-  CategoriesGrouppedJson({this.data});
 
-  CategoriesGrouppedJson.fromJson(Map<String, dynamic> json) {
+import 'abstract_json_resource.dart';
+
+/// represents a list of categoryGrouped json resource
+class CategoriesGroupedJsonList extends AbstractJsonResource {
+  List<CategoryGroupedJson> data;
+
+  CategoriesGroupedJsonList({this.data});
+
+  CategoriesGroupedJsonList.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      data = <Categories>[];
+      data = <CategoryGroupedJson>[];
       json['data'].forEach((v) {
-        data.add(new Categories.fromJson(v));
+        data.add(new CategoryGroupedJson.fromJson(v));
       });
     }
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
 }
 
-class Categories {
+/// represents a single categoryGrouped json resource
+class CategoryGroupedJson {
   int id;
   String name;
-  List<Subcategories> subcategories;
+  List<SubcategoryJson> subcategories;
 
-  Categories({this.id, this.name, this.subcategories});
+  CategoryGroupedJson({this.id, this.name, this.subcategories});
 
-  Categories.fromJson(Map<String, dynamic> json) {
+  CategoryGroupedJson.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     if (json['subcategories'] != null) {
-      subcategories = new List<Subcategories>();
+      subcategories = <SubcategoryJson>[];
       json['subcategories'].forEach((v) {
-        subcategories.add(new Subcategories.fromJson(v));
+        subcategories.add(new SubcategoryJson.fromJson(v));
       });
     }
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    if (this.subcategories != null) {
-      data['subcategories'] =
-          this.subcategories.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
 }
 
-class Subcategories {
+/// A single subcategory json resource
+class SubcategoryJson {
   int id;
   String name;
 
-  Subcategories({this.id, this.name});
+  SubcategoryJson({this.id, this.name});
 
-  Subcategories.fromJson(Map<String, dynamic> json) {
+  SubcategoryJson.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    return data;
-  }
 }
+

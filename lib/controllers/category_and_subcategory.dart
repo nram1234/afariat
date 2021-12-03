@@ -1,21 +1,21 @@
 
-import 'package:afariat/networking/apis/get_categories_groupped_api.dart';
+import 'package:afariat/networking/apis/categories_groupped_api.dart';
+
 import 'package:afariat/networking/jsonfile/categories_groupped_json.dart';
 import 'package:get/get.dart';
-
 class CategoryAndSubcategory extends GetxController{
-  final GetCategoriesGrouppedApi _categoriesGrouppedApi=GetCategoriesGrouppedApi();
-  Map<int, List<Subcategories>> sc = {};
-  List<Subcategories> listSubcategories = [];
-  Subcategories subcategories1;
-  List<Categories> categories = [];
-  Categories categorie;
+  final CategoriesGrouppedApi _categoriesGrouppedApi=CategoriesGrouppedApi();
+  Map<int, List<SubcategoryJson>> sc = {};
+  List<SubcategoryJson> listSubcategories = [];
+  SubcategoryJson subcategories1;
+  List<CategoryGroupedJson> categoryGroupList = [];
+  CategoryGroupedJson categoryGroupedJson;
   @override
   void onInit() {
     super.onInit();
-    _categoriesGrouppedApi.categoriesGroupped().then((value) {
-      categories = value.data;
-      for (var element in categories) {
+    _categoriesGrouppedApi.getList().then((value) {
+      categoryGroupList = value.data;
+      for (var element in categoryGroupList) {
         sc[element.id] = element.subcategories;
       }
       update();
@@ -23,14 +23,14 @@ class CategoryAndSubcategory extends GetxController{
   }
 
 
-  updateCategorie(Categories cat){
-categorie=cat;
-subcategories1 = null;
-listSubcategories=  sc[cat.id];
+  updateCategorie(CategoryGroupedJson cat){
+    categoryGroupedJson=cat;
+    subcategories1 = null;
+    listSubcategories=  sc[cat.id];
 
- update();
+    update();
   }
-  updateSupCategorie(Subcategories cat){
+  updateSupCategorie(SubcategoryJson cat){
     subcategories1=cat;
 
     update();

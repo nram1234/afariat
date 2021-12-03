@@ -7,7 +7,7 @@ class MyHomeItem extends StatelessWidget {
 
   MyHomeItem({this.size, this.adverts});
 
-  final Adverts adverts;
+  final AdvertJson adverts;
   @override
   Widget build(BuildContext context) {
     return Padding(

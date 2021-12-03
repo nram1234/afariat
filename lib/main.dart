@@ -5,6 +5,8 @@ import 'bindings/bindings.dart';
 import 'home/home_view.dart';
 
 void main() {
+
+
   runApp(const MyApp());
 }
 
@@ -24,5 +26,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
