@@ -9,13 +9,13 @@ abstract class ApiManager {
   String apiUrl();
 
   AbstractJsonResource fromJson(data);
-
+  Map<String,dynamic> queryParameters();
   /// Get a list of json resource from remote API. E.g: Adverts or cities
   Future<dynamic> getList({id}) async {
 
     AbstractJsonResource jsonList;
     var data;
-    await dioSingleton.dio.get(id==null?apiUrl():apiUrl()+id).then((value) {
+    await dioSingleton.dio.get(id==null?apiUrl():apiUrl()+id,queryParameters:queryParameters() ).then((value) {
       data = value.data;
     });
     jsonList = fromJson(data);

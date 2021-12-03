@@ -16,11 +16,23 @@ abstract class RefApi extends ApiManager {
 class CityApi extends RefApi {
   @override
   String apiUrl() => SettingsApp.cityUrl;
+
+  @override
+  Map<String, dynamic> queryParameters() {
+    Map<String, dynamic>map={};
+    return map;
+  }
 }
 
 class TownApi extends RefApi {
   @override
   String apiUrl() => SettingsApp.townUrl;
+
+  @override
+  Map<String, dynamic> queryParameters() {
+    Map<String, dynamic>map={};
+    return map;
+  }
 
 }
 
@@ -28,4 +40,10 @@ class TownApi extends RefApi {
 class PriceApi extends RefApi {
   @override
   String apiUrl() => SettingsApp.priceUrl;
+
+  @override
+  Map<String, dynamic> queryParameters() {
+    Map<String, dynamic>map={};
+    return map;
+  }
 }

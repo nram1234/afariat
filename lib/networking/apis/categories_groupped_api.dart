@@ -18,4 +18,9 @@ class CategoriesGrouppedApi extends ApiManager {
   String apiUrl({id}) {
     return SettingsApp.grouppedCategoriesUrl;
   }
+
+  @override
+  Map<String, dynamic> queryParameters() {
+    return {};
+  }
 }

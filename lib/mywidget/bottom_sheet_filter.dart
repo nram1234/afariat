@@ -20,7 +20,7 @@ class BottomSheetFilter extends StatefulWidget {
 }
 
 class _BottomSheetFilterState extends State<BottomSheetFilter> {
-  String dropdownValue = 'One';
+
 
   final tap1ViewController = Get.find<TapHomeViewController>();
 
@@ -42,13 +42,13 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(border: Border.all(color: Colors.orange)),
-                child: GetBuilder<CategoryAndSubcategory>(builder: (logic) {
-                  return Column(
-                    children: [
-                      DropdownButton<CategoryGroupedJson>(
+              child: GetBuilder<CategoryAndSubcategory>(builder: (logic) {
+                return Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(border: Border.all(color: Colors.orange),borderRadius: BorderRadius.circular(10)),
+                      child: DropdownButton<CategoryGroupedJson>(
                         isExpanded: true,
                         value: logic.categoryGroupedJson,
                         iconSize: 24,
@@ -63,7 +63,12 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                               );
                             }).toList(),
                       ),
-                      DropdownButton<SubcategoryJson>(
+                    ),
+                    const SizedBox(height: 8,),
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(border: Border.all(color: Colors.orange),borderRadius: BorderRadius.circular(10)),
+                      child: DropdownButton<SubcategoryJson>(
                         isExpanded: true,
                         value: logic.subcategories1,
                         iconSize: 24,
@@ -77,11 +82,11 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                                 child: Text(value.name),
                               );
                             }).toList(),
-                      )
-                    ],
-                  );
-                }),
-              ),
+                      ),
+                    )
+                  ],
+                );
+              }),
             ),
             const Padding(
               padding: EdgeInsets.all(16.0),
@@ -116,7 +121,8 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                 },
                 onChanged: logic.updateslidval,
               );
-            }),      const Padding(
+            }),
+            const Padding(
               padding: EdgeInsets.all(16.0),
               child: Text(
                 "location",
@@ -125,13 +131,13 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(border: Border.all(color: Colors.orange)),
-                child: GetBuilder<LocController>(builder: (logic) {
-                  return Column(
-                    children: [
-                      DropdownButton<RefJson>(
+              child: GetBuilder<LocController>(builder: (logic) {
+                return Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(border: Border.all(color: Colors.orange),borderRadius: BorderRadius.circular(10)),
+                      child: DropdownButton<RefJson>(
                         isExpanded: true,
                         value: logic.citie,
 
@@ -146,7 +152,12 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                           );
                         }).toList(),
                       ),
-                      DropdownButton<RefJson>(
+                    ),
+                    const SizedBox(height: 8,),
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(border: Border.all(color: Colors.orange),borderRadius: BorderRadius.circular(10)),
+                      child: DropdownButton<RefJson>(
                         isExpanded: true,
                         value: logic.town,
                         iconSize: 24,
@@ -160,11 +171,11 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                                 child: Text(value.name),
                               );
                             }).toList(),
-                      )
-                    ],
-                  );
-                }),
-              ),
+                      ),
+                    )
+                  ],
+                );
+              }),
             ),
 
 
@@ -173,7 +184,9 @@ class _BottomSheetFilterState extends State<BottomSheetFilter> {
                 CustomButton(
                   height: 50,
                   width: _size.width * .4,
-                  function: () {},
+                  function: () {
+
+                  },
                   labcolor: textbuttonColor,
                   label: "Appliquer",
                   btcolor: buttonColor,

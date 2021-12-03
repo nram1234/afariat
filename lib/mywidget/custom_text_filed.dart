@@ -20,10 +20,10 @@ final String hintText;
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(4.0),
         child: Container(
-          width: width,
-          padding: EdgeInsets.all(4),
+          width: width,height: 50,
+
           child: TextField(textAlign: TextAlign.end,
             obscureText: obscureText,keyboardType: keyboardType,
             controller: textEditingController,
@@ -31,10 +31,7 @@ final String hintText;
               icon: Icon(icon),hintText: hintText
             ),
           ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(21.0),
-            color: color,
-          ),
+          decoration: BoxDecoration(border: Border.all(color: Colors.orange),borderRadius: BorderRadius.circular(10)),
         ),
       ),
     );

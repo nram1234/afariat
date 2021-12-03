@@ -1,6 +1,7 @@
 
 import 'package:afariat/networking/apis/advert_api.dart';
 import 'package:afariat/networking/apis/ref_api.dart';
+import 'package:afariat/networking/apis/trysearch.dart';
 import 'package:afariat/networking/jsonfile/adverts_json.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -9,14 +10,15 @@ import 'package:syncfusion_flutter_sliders/sliders.dart';
 class TapHomeViewController extends GetxController {
   AdvertApi _advertApi = AdvertApi();
   PriceApi _pricesApi = PriceApi();
-  var box = GetStorage();
+
+  //var box = GetStorage();
   bool getdatafromweb = true;
   List<AdvertJson> adverts = [];
   List<dynamic> prices = [];
   int maxValue = 20;
   int minValue = 0;
   SfRangeValues values = SfRangeValues(0, 100000);
-
+Map<String,dynamic> serchoption={};
   @override
   void onInit() {
     super.onInit();
@@ -27,12 +29,20 @@ class TapHomeViewController extends GetxController {
   updatedata() async {
     await _advertApi.getList().then((value) {
       adverts = value.embedded.adverts;
+
       getdatafromweb = false;
     });
     update();
   }
 
-  filterupdate() {}
+  filterupdate() {
+    Search a=Search(serchoption);
+    a.getList().then((value) {
+      adverts=value.embedded.adverts;
+      print(value.toString());
+      update();
+    });
+  }
 
   getPriceList() async {
     await _pricesApi.getList().then((value) {
@@ -44,7 +54,9 @@ class TapHomeViewController extends GetxController {
     });
     update();
   }
-
+setserchoption(String key,v){
+    serchoption[key]=v;
+}
   updateslidval(value) {
     values = value;
     update();
