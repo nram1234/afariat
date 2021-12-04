@@ -30,7 +30,7 @@ class BottomSheetSearch extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [ const SizedBox(height: 8,),
-          CustomTextFiled( hintText: "Search",),
+          CustomTextFiled( hintText: "Search",textEditingController: tap1ViewController.searchWord,),
           const Padding(
             padding: EdgeInsets.all(16.0),
             child: Text(

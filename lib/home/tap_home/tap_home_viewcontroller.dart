@@ -3,6 +3,7 @@ import 'package:afariat/networking/apis/advert_api.dart';
 import 'package:afariat/networking/apis/ref_api.dart';
 import 'package:afariat/networking/apis/trysearch.dart';
 import 'package:afariat/networking/jsonfile/adverts_json.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
@@ -10,7 +11,7 @@ import 'package:syncfusion_flutter_sliders/sliders.dart';
 class TapHomeViewController extends GetxController {
   AdvertApi _advertApi = AdvertApi();
   PriceApi _pricesApi = PriceApi();
-
+TextEditingController searchWord=TextEditingController();
   //var box = GetStorage();
   bool getdatafromweb = true;
   List<AdvertJson> adverts = [];
@@ -36,7 +37,11 @@ Map<String,dynamic> serchoption={};
   }
 
   filterupdate() {
-    Search a=Search(serchoption);
+    if(searchWord.text.isNotEmpty){
+      setserchoption("search",searchWord.text.toString());
+    }
+     Search a=Search(serchoption);
+    print(a.map);
     a.getList().then((value) {
       adverts=value.embedded.adverts;
       print(value.toString());
